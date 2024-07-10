@@ -12,11 +12,23 @@
   </head>
   <body class="page">
     <main class="content">
+
+      <!-- Блок RESULT -->
+
       <section class="result">
+
+        <!-- Видео -->
+
         <div class="result__video-container">
           <video src="" controls class="result__video" poster=""></video>
         </div>
+
+        <!-- Форма поиска -->
+
         <form class="search-form">
+
+          <!-- Набор полей поиска по Городу -->
+
           <fieldset class="search-form__fieldset">
             <h2 class="search-form__fieldset-title">Город</h2>
             <label class="search-form__label">
@@ -29,6 +41,9 @@
               />
             </label>
           </fieldset>
+
+          <!-- Набор полей поиска по Времени суток -->
+
           <fieldset class="search-form__fieldset">
             <h2 class="search-form__fieldset-title">Время суток</h2>
             <div class="search-form__checkbox-list">
@@ -64,11 +79,19 @@
               </label>
             </div>
           </fieldset>
+
+          <!-- Кнопка поиска -->
+
           <button type="submit" class="button search-form__submit-button">
             Найти
           </button>
         </form>
       </section>
+
+      <!-- Конец блока RESULT -->
+
+      <!-- Блок CONTENT -->
+
       <section class="content__details">
         <h1 class="title">
           <span class="content__accent">По-</span><br />смотри<br />в окно
@@ -77,6 +100,9 @@
           <!-- ЗДЕСЬ ОКАЖУТСЯ ТЕМПЛЕЙТЫ КАРТОЧЕК -->
         </ul>
       </section>
+
+      <!-- Конец блока CONTENT -->
+
     </main>
 
     <!-- ТЕМПЛЕЙТЫ -->
@@ -105,6 +131,7 @@
         </a>
       </li>
     </template>
+
     <template class="more-button-template">
       <li><button class="button more-button">Показать еще</button></li>
     </template>
@@ -114,6 +141,7 @@
         <h2 class="error__title"></h2>
       </div>
     </template>
+    
     <script src="./scripts/script.js"></script>
   </body>
 </html>

@@ -36,3 +36,42 @@ ul,
 ol {
   list-style: none;
 }
+
+/* Стили проектной работы */
+
+.content {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  inline-size: 1140px;
+}
+
+/* Стили блока RESULT */
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Стили блока CONTENT */
+
+.content__details {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 26px;
+}
+
+.content__list {
+  block-size: 298px;
+  overflow: auto;
+}
