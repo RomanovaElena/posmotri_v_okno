@@ -57,6 +57,8 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  /* для выравнивания по высоте кнопок --------------- */
+  margin-block-end: 2px;
 }
 
 .result__video-container {
@@ -78,10 +80,79 @@ ol {
   align-items: flex-start;
 }
 
+.search-form__fieldset {
+  border: none;
+}
+
 .search-form__fieldset-title {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
+  margin-block-end: 5px; /* отступ снизу заголовка у форм поиска */
+}
+
+.search-form__label {
+  display: flex;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.search-form__textfield {
+  appearance: none;
+  inline-size: 225px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  background-color: transparent;
+  border-style: none;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff; 
+  padding: 2px 0;
+  /* border-style: none; */
+  /* background-color: transparent; /*background или background-color???*/
+  /* color: rgb(255 255 255/0.7); */
+}
+
+.search-form__textfield::placeholder {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: rgb(255 255 255/.7);
+}
+
+.search-form__checkbox-list {
+  /*расположить чекбоксы в линию - подумать*/
+  display: flex; 
+  gap: 15px;
+}
+
+.search-form__pseudo-checkbox {
+  inline-size: 19px;
+  block-size: 19px;
+  border: 1px solid #fff;
+  display: flex;
+  margin-right: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-weight: 700;
+  text-align: center;
+  /*background или background-color???*/
+  background-color: transparent; 
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.search-form__submit-button {
+  inline-size: 194px;
+  block-size: 34px;
+  margin-block-start: 20px;
 }
 
 /* Стили блока CONTENT */
@@ -110,16 +181,19 @@ ol {
 .content__list {
   position: relative;
   block-size: 298px;
+  inline-size: 100%;
   overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 2px;
+  padding: 0 2px 2px;
 }
 
 .content__card-link {
   text-decoration: none;
   color: #fff;
+  /*тут или у video-card?*/
+  cursor: pointer; 
 }
 
 .content__video-card {
@@ -130,7 +204,8 @@ ol {
 }
 
 .content__video-card-description-container {
-  inline-size: 100%;
+  /* inline-size: 100%; */
+  inline-size: 200px;
 }
 
 .content__video-card-title {
@@ -153,3 +228,19 @@ ol {
   object-position: center;
 }
 
+.more-button {
+  inline-size: 100%;
+  block-size: 34px;
+}
+
+/* Паттерн visually-hidden */
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+} 
