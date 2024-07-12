@@ -6,6 +6,7 @@
 
 html {
   block-size: 100%;
+  scroll-behavior: smooth;
 }
 
 .page {
@@ -16,7 +17,6 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
-
   display: flex;
   align-items: center;
 }
@@ -40,8 +40,6 @@ ol {
   list-style: none;
 }
 
-/* Стили проектной работы */
-
 .content {
   display: flex;
   align-items: flex-end;
@@ -56,8 +54,8 @@ ol {
 .result {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 16px;
-  /* для выравнивания по высоте кнопок --------------- */
   margin-block-end: 2px;
 }
 
@@ -88,13 +86,35 @@ ol {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-  margin-block-end: 5px; /* отступ снизу заголовка у форм поиска */
+  margin-block-end: 5px;
 }
 
 .search-form__label {
   display: flex;
+  align-items: center;
   width: fit-content;
   cursor: pointer;
+  line-height: 1;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.search-form__label:hover .search-form__label-text {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .search-form__textfield {
@@ -106,12 +126,19 @@ ol {
   color: inherit;
   background-color: transparent;
   border-style: none;
-  border-bottom: 1px solid #fff;
-  border-top: 1px solid #fff; 
+  border-block-start: 1px solid #fff;
+  border-block-end: 1px solid #fff;
+  border-inline-start: 1px solid transparent;
+  border-inline-end: 1px solid transparent;
   padding: 2px 0;
-  /* border-style: none; */
-  /* background-color: transparent; /*background или background-color???*/
-  /* color: rgb(255 255 255/0.7); */
+}
+
+.search-form__textfield:active {
+  border-color: #fff;
+}
+
+.search-form__textfield:focus {
+  outline: none;
 }
 
 .search-form__textfield::placeholder {
@@ -122,8 +149,7 @@ ol {
 }
 
 .search-form__checkbox-list {
-  /*расположить чекбоксы в линию - подумать*/
-  display: flex; 
+  display: flex;
   gap: 15px;
 }
 
@@ -137,22 +163,45 @@ ol {
   align-items: center;
 }
 
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background-color:  #fff;
+}
+
 .button {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
   font-weight: 700;
   text-align: center;
-  /*background или background-color???*/
-  background-color: transparent; 
+  background-color: transparent;
   border: 1px solid #fff;
   cursor: pointer;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid #fff;;
+  outline-offset: 1px;
+}
+
+.button:active {
+  background-color: #545050;
 }
 
 .search-form__submit-button {
   inline-size: 194px;
   block-size: 34px;
-  margin-block-start: 20px;
+  align-self: flex-end;
 }
 
 /* Стили блока CONTENT */
@@ -182,43 +231,70 @@ ol {
   position: relative;
   block-size: 298px;
   inline-size: 100%;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 0 2px 2px;
+  padding: 2px;
+}
+
+.content__list-item:not(:last-child) {
+  margin-block-end: 30px;
 }
 
 .content__card-link {
+  display: block;
   text-decoration: none;
   color: #fff;
-  /*тут или у video-card?*/
-  cursor: pointer; 
+  cursor: pointer;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
+.content__card-link_current {
+  background-color: #545050;
 }
 
 .content__video-card {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: flex-start;
   inline-size: 100%;
 }
 
 .content__video-card-description-container {
-  /* inline-size: 100%; */
   inline-size: 200px;
+  padding: 2px 0 0 2px;
 }
 
 .content__video-card-title {
   font-family: Oswald, sans-serif;
   font-weight: 700;
   font-size: 30px;
+  line-height: 1;
   text-transform: uppercase;
   margin-block-end: 6px;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
 }
 
 .content__video-card-description {
   font-weight: 400;
   line-height: 0.9;
+  font-size: 18px;
 }
 
 .content__video-card-thumbnail {
@@ -232,15 +308,3 @@ ol {
   inline-size: 100%;
   block-size: 34px;
 }
-
-/* Паттерн visually-hidden */
-
-.visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-} 
